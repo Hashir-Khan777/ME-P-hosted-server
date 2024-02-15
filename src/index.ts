@@ -22,7 +22,7 @@ const app = new App(
         new ReviewController(),
         new StoreController(),
     ],
-    Number(process.env.PORT)
+    5000
 );
 
 app.listen();
