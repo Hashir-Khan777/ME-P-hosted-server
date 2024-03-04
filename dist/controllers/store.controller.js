@@ -76,10 +76,36 @@ var StoreController = /** @class */ (function () {
                 }
             });
         }); };
+        this.getStores = function (req, res, next) { return __awaiter(_this, void 0, void 0, function () {
+            var stores, error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.StoreService.getStores()];
+                    case 1:
+                        stores = _a.sent();
+                        res.status(200).json(stores);
+                        return [3 /*break*/, 3];
+                    case 2:
+                        error_2 = _a.sent();
+                        console.log(error_2);
+                        if (error_2 instanceof http_exception_1.default) {
+                            next(error_2);
+                        }
+                        else {
+                            return [2 /*return*/, next(error_2)];
+                        }
+                        return [3 /*break*/, 3];
+                    case 3: return [2 /*return*/];
+                }
+            });
+        }); };
         this.initialiseRoutes();
     }
     StoreController.prototype.initialiseRoutes = function () {
         this.router.post("".concat(this.path), jwt_middleware_1.isAuth, this.addStore);
+        this.router.get("".concat(this.path), jwt_middleware_1.isAuth, this.getStores);
     };
     return StoreController;
 }());

@@ -36,6 +36,15 @@ class StoreService {
             throw err;
         }
     }
+
+    public async getStores(): Promise<any> {
+        try {
+            const Stores = await this.Store.find({});
+            return Stores;
+        } catch (err) {
+            throw err;
+        }
+    }
 }
 
 export default StoreService;

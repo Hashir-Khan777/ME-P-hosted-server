@@ -15,6 +15,7 @@ class StoreController implements Controller {
 
     private initialiseRoutes(): void {
         this.router.post(`${this.path}`, isAuth, this.addStore);
+        this.router.get(`${this.path}`, isAuth, this.getStores);
     }
 
     private addStore = async (
@@ -36,6 +37,24 @@ class StoreController implements Controller {
                 name
             );
             res.status(201).json(store);
+        } catch (error) {
+            console.log(error);
+            if (error instanceof HttpException) {
+                next(error);
+            } else {
+                return next(error);
+            }
+        }
+    };
+
+    private getStores = async (
+        req: any,
+        res: Response,
+        next: NextFunction
+    ): Promise<Response | void> => {
+        try {
+            const stores = await this.StoreService.getStores();
+            res.status(200).json(stores);
         } catch (error) {
             console.log(error);
             if (error instanceof HttpException) {
