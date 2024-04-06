@@ -64,13 +64,13 @@ var RentalController = /** @class */ (function () {
         this.router = (0, express_1.Router)();
         this.RentalService = new rentals_service_1.default();
         this.createRental = function (req, res, next) { return __awaiter(_this, void 0, void 0, function () {
-            var _a, rental_name, model, pricing_type, year, make, price, category, location_1, sku, available_from, end_date, condition, description, reserved, images, Rental, error_1;
+            var _a, rental_name, model, pricing_type, year, make, price, category, location_1, sku, available_from, end_date, condition, description, reserved, images, store, Rental, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, rental_name = _a.rental_name, model = _a.model, pricing_type = _a.pricing_type, year = _a.year, make = _a.make, price = _a.price, category = _a.category, location_1 = _a.location, sku = _a.sku, available_from = _a.available_from, end_date = _a.end_date, condition = _a.condition, description = _a.description, reserved = _a.reserved, images = _a.images;
-                        return [4 /*yield*/, this.RentalService.createRental(rental_name, model, pricing_type, year, make, price, category, location_1, sku, available_from, end_date, condition, description, reserved, images)];
+                        _a = req.body, rental_name = _a.rental_name, model = _a.model, pricing_type = _a.pricing_type, year = _a.year, make = _a.make, price = _a.price, category = _a.category, location_1 = _a.location, sku = _a.sku, available_from = _a.available_from, end_date = _a.end_date, condition = _a.condition, description = _a.description, reserved = _a.reserved, images = _a.images, store = _a.store;
+                        return [4 /*yield*/, this.RentalService.createRental(rental_name, model, pricing_type, year, make, price, category, location_1, sku, available_from, end_date, condition, description, reserved, images, store)];
                     case 1:
                         Rental = _b.sent();
                         res.status(201).json({ Rental: Rental });
@@ -183,7 +183,7 @@ var RentalController = /** @class */ (function () {
                     case 1:
                         Rental = _a.sent();
                         if (Rental) {
-                            res.json({ Rental: Rental });
+                            res.json(Rental);
                         }
                         else {
                             next(new http_exception_1.default(404, 'Rental not found'));

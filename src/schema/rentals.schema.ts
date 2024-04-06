@@ -8,6 +8,7 @@ const createRental = Joi.object({
     make: Joi.string().required(),
     price: Joi.number().required(),
     category: Joi.string().required(),
+    store: Joi.string().required(),
     location: Joi.string().required(),
     sku: Joi.string().required(),
     available_from: Joi.date().required(),

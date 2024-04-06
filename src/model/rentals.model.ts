@@ -18,6 +18,11 @@ const rentalSchema = new Schema(
             ref: 'Category',
             required: true,
         },
+        store: {
+            type: Schema.Types.ObjectId,
+            ref: 'Store',
+            required: true,
+        },
         location: { type: String, required: true },
         sku: { type: String, required: true, unique: true },
         available_from: { type: Date, required: true },

@@ -21,7 +21,8 @@ class RentalService {
         condition: 'used' | 'new',
         description: string,
         reserved: boolean,
-        images: string[]
+        images: string[],
+        store: string
     ): Promise<RentalDocument> {
         try {
             const dup = await this.Rental.findOne({ rental_name: rental_name });
@@ -48,6 +49,7 @@ class RentalService {
                 description,
                 reserved,
                 images,
+                store,
             });
 
             return rental;
@@ -110,7 +112,11 @@ class RentalService {
 
     public async getRentalById(id: string): Promise<RentalDocument | null> {
         try {
-            const rental = await this.Rental.findById(id);
+            const rental = await this.Rental.findById(id).populate([
+                { path: 'store' },
+                { path: 'category' },
+                { path: 'store', populate: { path: 'user' } },
+            ]);
             return rental;
         } catch (err) {
             throw err;

@@ -64,13 +64,13 @@ var PartController = /** @class */ (function () {
         this.router = (0, express_1.Router)();
         this.PartService = new part_service_1.default();
         this.createPart = function (req, res, next) { return __awaiter(_this, void 0, void 0, function () {
-            var _a, product_title, make, price, category, location_1, condition, description, images, Part, error_1;
+            var _a, product_title, make, price, category, location_1, condition, description, images, store, Part, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, product_title = _a.product_title, make = _a.make, price = _a.price, category = _a.category, location_1 = _a.location, condition = _a.condition, description = _a.description, images = _a.images;
-                        return [4 /*yield*/, this.PartService.createPart(product_title, make, price, category, location_1, condition, description, images)];
+                        _a = req.body, product_title = _a.product_title, make = _a.make, price = _a.price, category = _a.category, location_1 = _a.location, condition = _a.condition, description = _a.description, images = _a.images, store = _a.store;
+                        return [4 /*yield*/, this.PartService.createPart(product_title, make, price, category, location_1, condition, description, images, store)];
                     case 1:
                         Part = _b.sent();
                         res.status(201).json({ Part: Part });
@@ -183,7 +183,7 @@ var PartController = /** @class */ (function () {
                     case 1:
                         Part = _a.sent();
                         if (Part) {
-                            res.json({ Part: Part });
+                            res.json(Part);
                         }
                         else {
                             next(new http_exception_1.default(404, 'Part not found'));

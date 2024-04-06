@@ -7,6 +7,7 @@ export default interface EquipmentDocument extends Document {
     year: number;
     make: string;
     category: string;
+    store: string;
     location: string;
     description: string;
     sku: string;

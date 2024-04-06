@@ -14,7 +14,10 @@ class StoreService {
         area: string,
         postalCode: string,
         address: StringSchema,
-        name: string
+        name: string,
+        paymentScreenShot: string,
+        pricingPlan: string,
+        phoneNumber: string
     ): Promise<StoreDocument> {
         try {
             const Store = await this.Store.create({
@@ -25,6 +28,9 @@ class StoreService {
                 postalCode,
                 address,
                 name,
+                paymentScreenShot,
+                pricingPlan,
+                phoneNumber,
             });
             await this.User.findByIdAndUpdate(
                 { _id: user },
@@ -40,6 +46,28 @@ class StoreService {
     public async getStores(): Promise<any> {
         try {
             const Stores = await this.Store.find({});
+            return Stores;
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public async getStoreByUserId(userId: string): Promise<any> {
+        try {
+            const Store = await this.Store.findOne({ user: userId });
+            return Store;
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    public async approveStore(_id: string): Promise<any> {
+        try {
+            const Stores = await this.Store.findOneAndUpdate(
+                { _id },
+                { approve: true },
+                { new: true }
+            );
             return Stores;
         } catch (err) {
             throw err;

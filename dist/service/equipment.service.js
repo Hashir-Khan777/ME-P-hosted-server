@@ -57,7 +57,7 @@ var EquipmentService = /** @class */ (function () {
     function EquipmentService() {
         this.Equipment = equipment_model_1.default;
     }
-    EquipmentService.prototype.createEquipment = function (equipment_name, model, year, make, category, location, description, sku, condition, price, images) {
+    EquipmentService.prototype.createEquipment = function (equipment_name, model, year, make, category, location, description, sku, condition, price, images, store) {
         return __awaiter(this, void 0, void 0, function () {
             var dup, Equipment_1, err_1;
             return __generator(this, function (_a) {
@@ -87,6 +87,7 @@ var EquipmentService = /** @class */ (function () {
                                 price: price,
                                 description: description,
                                 images: images,
+                                store: store,
                             })];
                     case 3:
                         Equipment_1 = _a.sent();
@@ -125,7 +126,11 @@ var EquipmentService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.Equipment.findById(id)];
+                        return [4 /*yield*/, this.Equipment.findById(id).populate([
+                                { path: 'store' },
+                                { path: 'category' },
+                                { path: 'store', populate: { path: 'user' } },
+                            ])];
                     case 1:
                         Equipment_2 = _a.sent();
                         return [2 /*return*/, Equipment_2];

@@ -14,7 +14,8 @@ class PartService {
         location: string,
         condition: 'used' | 'new',
         description: string,
-        images: string[]
+        images: string[],
+        store: string
     ): Promise<PartDocument> {
         try {
             const dup = await this.Part.findOne({
@@ -36,6 +37,7 @@ class PartService {
                 condition,
                 description,
                 images,
+                store,
             });
 
             return part;
@@ -86,7 +88,11 @@ class PartService {
 
     public async getPartById(id: string): Promise<PartDocument | null> {
         try {
-            const part = await this.Part.findById(id);
+            const part = await this.Part.findById(id).populate([
+                { path: 'store' },
+                { path: 'category' },
+                { path: 'store', populate: { path: 'user' } },
+            ]);
             return part;
         } catch (err) {
             throw err;

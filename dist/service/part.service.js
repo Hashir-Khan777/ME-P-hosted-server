@@ -45,7 +45,7 @@ var PartService = /** @class */ (function () {
     function PartService() {
         this.Part = part_model_1.default;
     }
-    PartService.prototype.createPart = function (product_title, make, price, category, location, condition, description, images) {
+    PartService.prototype.createPart = function (product_title, make, price, category, location, condition, description, images, store) {
         return __awaiter(this, void 0, void 0, function () {
             var dup, part, err_1;
             return __generator(this, function (_a) {
@@ -69,6 +69,7 @@ var PartService = /** @class */ (function () {
                                 condition: condition,
                                 description: description,
                                 images: images,
+                                store: store,
                             })];
                     case 2:
                         part = _a.sent();
@@ -134,7 +135,11 @@ var PartService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.Part.findById(id)];
+                        return [4 /*yield*/, this.Part.findById(id).populate([
+                                { path: 'store' },
+                                { path: 'category' },
+                                { path: 'store', populate: { path: 'user' } },
+                            ])];
                     case 1:
                         part = _a.sent();
                         return [2 /*return*/, part];

@@ -31,7 +31,8 @@ class EquipmentService {
         sku: string,
         condition: 'used' | 'new',
         price: number,
-        images: string[]
+        images: string[],
+        store: string
     ): Promise<EquipmentDocument> {
         console.log(condition, description, 'condition, description');
         try {
@@ -56,6 +57,7 @@ class EquipmentService {
                 price,
                 description,
                 images,
+                store,
             });
             return Equipment;
         } catch (err) {
@@ -76,7 +78,11 @@ class EquipmentService {
         id: string
     ): Promise<EquipmentDocument | null> {
         try {
-            const Equipment = await this.Equipment.findById(id);
+            const Equipment = await this.Equipment.findById(id).populate([
+                { path: 'store' },
+                { path: 'category' },
+                { path: 'store', populate: { path: 'user' } },
+            ]);
             return Equipment;
         } catch (err) {
             throw err;

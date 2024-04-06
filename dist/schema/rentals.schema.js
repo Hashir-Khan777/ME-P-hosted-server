@@ -12,6 +12,7 @@ var createRental = joi_1.default.object({
     make: joi_1.default.string().required(),
     price: joi_1.default.number().required(),
     category: joi_1.default.string().required(),
+    store: joi_1.default.string().required(),
     location: joi_1.default.string().required(),
     sku: joi_1.default.string().required(),
     available_from: joi_1.default.date().required(),

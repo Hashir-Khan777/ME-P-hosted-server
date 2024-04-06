@@ -17,6 +17,11 @@ var rentalSchema = new mongoose_1.Schema({
         ref: 'Category',
         required: true,
     },
+    store: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'Store',
+        required: true,
+    },
     location: { type: String, required: true },
     sku: { type: String, required: true, unique: true },
     available_from: { type: Date, required: true },

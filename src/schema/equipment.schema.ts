@@ -6,6 +6,7 @@ const createEquipment = Joi.object({
     year: Joi.number().required(),
     make: Joi.string().required(),
     category: Joi.string().required(),
+    store: Joi.string().required(),
     location: Joi.string().required(),
     description: Joi.string().required(),
     sku: Joi.string().required(),

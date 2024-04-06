@@ -12,6 +12,11 @@ var equipmentSchema = new mongoose_1.Schema({
         ref: 'Category',
         required: true,
     },
+    store: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'Store',
+        required: true,
+    },
     location: { type: String, required: true },
     sku: { type: String, required: true, unique: true },
     condition: { type: String, enum: ['used', 'new'], required: true },

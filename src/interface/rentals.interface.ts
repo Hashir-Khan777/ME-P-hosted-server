@@ -9,6 +9,7 @@ export default interface RentalDocument extends Document {
     make: string;
     price: number;
     category: CategoryDocument;
+    store: string;
     location: string;
     sku: string;
     available_from: Date;

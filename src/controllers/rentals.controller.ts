@@ -77,6 +77,7 @@ class RentalController implements Controller {
                 description,
                 reserved,
                 images,
+                store,
             } = req.body;
             const Rental = await this.RentalService.createRental(
                 rental_name,
@@ -93,7 +94,8 @@ class RentalController implements Controller {
                 condition,
                 description,
                 reserved,
-                images
+                images,
+                store
             );
             res.status(201).json({ Rental });
         } catch (error) {
@@ -206,7 +208,7 @@ class RentalController implements Controller {
             const Rental = await this.RentalService.getRentalById(id);
 
             if (Rental) {
-                res.json({ Rental });
+                res.json(Rental);
             } else {
                 next(new HttpException(404, 'Rental not found'));
             }

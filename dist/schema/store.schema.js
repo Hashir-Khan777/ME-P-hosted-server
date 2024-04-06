@@ -10,7 +10,11 @@ var Store = joi_1.default.object({
     state: joi_1.default.string().required(),
     area: joi_1.default.string().required(),
     postalCode: joi_1.default.string().required(),
+    pricingPlan: joi_1.default.string().required(),
     address: joi_1.default.string().required(),
     name: joi_1.default.string().required(),
+    phoneNumber: joi_1.default.number().required(),
+    paymentScreenShot: joi_1.default.string().required(),
+    approve: joi_1.default.boolean().required().default(false),
 });
 exports.default = { Store: Store };

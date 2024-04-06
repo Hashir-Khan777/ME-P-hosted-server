@@ -6,6 +6,7 @@ export default interface PartDocument extends Document {
     make: string;
     price: number;
     category: string;
+    store: string;
     location: string;
     condition: 'used' | 'new';
     description: string;

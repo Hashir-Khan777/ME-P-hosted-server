@@ -67,6 +67,7 @@ class EquipmentController implements Controller {
                 price,
                 description,
                 images,
+                store,
             } = req.body;
 
             const Equipment = await this.EquipmentService.createEquipment(
@@ -80,7 +81,8 @@ class EquipmentController implements Controller {
                 sku,
                 condition,
                 price,
-                images
+                images,
+                store
             );
             res.status(201).json({ Equipment });
         } catch (error) {
@@ -137,7 +139,7 @@ class EquipmentController implements Controller {
             const Equipment = await this.EquipmentService.getEquipmentById(id);
 
             if (Equipment) {
-                res.json({ Equipment });
+                res.json(Equipment);
             } else {
                 next(new HttpException(404, 'Equipment not found'));
             }

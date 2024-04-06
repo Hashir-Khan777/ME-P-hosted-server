@@ -13,6 +13,11 @@ const equipmentSchema = new Schema(
             ref: 'Category',
             required: true,
         },
+        store: {
+            type: Schema.Types.ObjectId,
+            ref: 'Store',
+            required: true,
+        },
         location: { type: String, required: true },
         sku: { type: String, required: true, unique: true },
         condition: { type: String, enum: ['used', 'new'], required: true },

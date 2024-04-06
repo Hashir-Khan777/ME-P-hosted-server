@@ -70,6 +70,7 @@ class PartController implements Controller {
                 condition,
                 description,
                 images,
+                store,
             } = req.body;
             const Part = await this.PartService.createPart(
                 product_title,
@@ -79,7 +80,8 @@ class PartController implements Controller {
                 location,
                 condition,
                 description,
-                images
+                images,
+                store
             );
             res.status(201).json({ Part });
         } catch (error) {
@@ -180,7 +182,7 @@ class PartController implements Controller {
             const Part = await this.PartService.getPartById(id);
 
             if (Part) {
-                res.json({ Part });
+                res.json(Part);
             } else {
                 next(new HttpException(404, 'Part not found'));
             }

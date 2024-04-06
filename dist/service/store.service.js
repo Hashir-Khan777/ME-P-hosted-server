@@ -46,7 +46,7 @@ var StoreService = /** @class */ (function () {
         this.Store = store_model_1.default;
         this.User = auth_model_1.default;
     }
-    StoreService.prototype.createStore = function (user, country, state, area, postalCode, address, name) {
+    StoreService.prototype.createStore = function (user, country, state, area, postalCode, address, name, paymentScreenShot, pricingPlan, phoneNumber) {
         return __awaiter(this, void 0, void 0, function () {
             var Store_1, err_1;
             return __generator(this, function (_a) {
@@ -61,6 +61,9 @@ var StoreService = /** @class */ (function () {
                                 postalCode: postalCode,
                                 address: address,
                                 name: name,
+                                paymentScreenShot: paymentScreenShot,
+                                pricingPlan: pricingPlan,
+                                phoneNumber: phoneNumber,
                             })];
                     case 1:
                         Store_1 = _a.sent();
@@ -90,6 +93,44 @@ var StoreService = /** @class */ (function () {
                     case 2:
                         err_2 = _a.sent();
                         throw err_2;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    StoreService.prototype.getStoreByUserId = function (userId) {
+        return __awaiter(this, void 0, void 0, function () {
+            var Store_2, err_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.Store.findOne({ user: userId })];
+                    case 1:
+                        Store_2 = _a.sent();
+                        return [2 /*return*/, Store_2];
+                    case 2:
+                        err_3 = _a.sent();
+                        throw err_3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    StoreService.prototype.approveStore = function (_id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var Stores, err_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, this.Store.findOneAndUpdate({ _id: _id }, { approve: true }, { new: true })];
+                    case 1:
+                        Stores = _a.sent();
+                        return [2 /*return*/, Stores];
+                    case 2:
+                        err_4 = _a.sent();
+                        throw err_4;
                     case 3: return [2 /*return*/];
                 }
             });

@@ -5,6 +5,7 @@ const createPart = Joi.object({
     make: Joi.string().required(),
     price: Joi.number().required(),
     category: Joi.string().required(),
+    store: Joi.string().required(),
     location: Joi.string().required(),
     condition: Joi.string().valid('used', 'new').required(),
     description: Joi.string(),

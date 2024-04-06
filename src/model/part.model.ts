@@ -11,6 +11,11 @@ const partSchema = new Schema(
             ref: 'Category',
             required: true,
         },
+        store: {
+            type: Schema.Types.ObjectId,
+            ref: 'Store',
+            required: true,
+        },
         location: { type: String, required: true },
         condition: { type: String, enum: ['used', 'new'], required: true },
         description: { type: String, required: true },

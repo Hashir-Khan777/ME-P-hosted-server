@@ -10,6 +10,7 @@ var createEquipment = joi_1.default.object({
     year: joi_1.default.number().required(),
     make: joi_1.default.string().required(),
     category: joi_1.default.string().required(),
+    store: joi_1.default.string().required(),
     location: joi_1.default.string().required(),
     description: joi_1.default.string().required(),
     sku: joi_1.default.string().required(),

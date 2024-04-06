@@ -10,6 +10,11 @@ var partSchema = new mongoose_1.Schema({
         ref: 'Category',
         required: true,
     },
+    store: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        ref: 'Store',
+        required: true,
+    },
     location: { type: String, required: true },
     condition: { type: String, enum: ['used', 'new'], required: true },
     description: { type: String, required: true },

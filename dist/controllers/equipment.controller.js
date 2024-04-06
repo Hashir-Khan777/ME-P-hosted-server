@@ -64,13 +64,13 @@ var EquipmentController = /** @class */ (function () {
         this.router = (0, express_1.Router)();
         this.EquipmentService = new equipment_service_1.default();
         this.createEquipment = function (req, res, next) { return __awaiter(_this, void 0, void 0, function () {
-            var _a, equipment_name, model, year, make, category, location_1, sku, condition, price, description, images, Equipment, error_1;
+            var _a, equipment_name, model, year, make, category, location_1, sku, condition, price, description, images, store, Equipment, error_1;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _b.trys.push([0, 2, , 3]);
-                        _a = req.body, equipment_name = _a.equipment_name, model = _a.model, year = _a.year, make = _a.make, category = _a.category, location_1 = _a.location, sku = _a.sku, condition = _a.condition, price = _a.price, description = _a.description, images = _a.images;
-                        return [4 /*yield*/, this.EquipmentService.createEquipment(equipment_name, model, year, make, category, location_1, description, sku, condition, price, images)];
+                        _a = req.body, equipment_name = _a.equipment_name, model = _a.model, year = _a.year, make = _a.make, category = _a.category, location_1 = _a.location, sku = _a.sku, condition = _a.condition, price = _a.price, description = _a.description, images = _a.images, store = _a.store;
+                        return [4 /*yield*/, this.EquipmentService.createEquipment(equipment_name, model, year, make, category, location_1, description, sku, condition, price, images, store)];
                     case 1:
                         Equipment = _b.sent();
                         res.status(201).json({ Equipment: Equipment });
@@ -150,7 +150,7 @@ var EquipmentController = /** @class */ (function () {
                     case 1:
                         Equipment = _a.sent();
                         if (Equipment) {
-                            res.json({ Equipment: Equipment });
+                            res.json(Equipment);
                         }
                         else {
                             next(new http_exception_1.default(404, 'Equipment not found'));

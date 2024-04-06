@@ -6,6 +6,10 @@ export default interface StoreDocument extends Document {
     state: String;
     area: String;
     postalCode: String;
+    pricingPlan: String;
     address: String;
     name: String;
+    phoneNumber: Number;
+    paymentScreenShot: String;
+    approve: Boolean;
 }

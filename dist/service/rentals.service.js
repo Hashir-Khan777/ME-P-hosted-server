@@ -45,7 +45,7 @@ var RentalService = /** @class */ (function () {
     function RentalService() {
         this.Rental = rentals_model_1.default;
     }
-    RentalService.prototype.createRental = function (rental_name, model, pricing_type, year, make, price, category, location, sku, available_from, end_date, condition, description, reserved, images) {
+    RentalService.prototype.createRental = function (rental_name, model, pricing_type, year, make, price, category, location, sku, available_from, end_date, condition, description, reserved, images, store) {
         return __awaiter(this, void 0, void 0, function () {
             var dup, rental, err_1;
             return __generator(this, function (_a) {
@@ -74,6 +74,7 @@ var RentalService = /** @class */ (function () {
                                 description: description,
                                 reserved: reserved,
                                 images: images,
+                                store: store,
                             })];
                     case 2:
                         rental = _a.sent();
@@ -145,7 +146,11 @@ var RentalService = /** @class */ (function () {
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.Rental.findById(id)];
+                        return [4 /*yield*/, this.Rental.findById(id).populate([
+                                { path: 'store' },
+                                { path: 'category' },
+                                { path: 'store', populate: { path: 'user' } },
+                            ])];
                     case 1:
                         rental = _a.sent();
                         return [2 /*return*/, rental];
